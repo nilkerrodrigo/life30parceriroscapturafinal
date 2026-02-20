@@ -51,7 +51,7 @@ const Hero = () => {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-tight"
+            className="text-3xl md:text-5xl font-bold tracking-tight mb-6 leading-tight"
           >
             Tenha um <span className="text-[#D4AF37]">ecossistema pronto</span> para operar reabilitação de crédito com plataforma, método e suporte.
           </motion.h1>
@@ -210,7 +210,7 @@ const FormSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const message = `Olá, quero acesso ao ecossistema Life 360.
+    const message = `*Lead Life 360 Parceiros*
     
 *Nome:* ${formData.name}
 *WhatsApp:* ${formData.whatsapp}
