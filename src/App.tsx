@@ -66,9 +66,24 @@ const Hero = () => {
           </motion.p>
 
           <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+            className="w-full max-w-4xl mx-auto mb-12 aspect-video rounded-2xl overflow-hidden shadow-2xl border border-[#D4AF37]/30 bg-black relative z-20"
+          >
+            <iframe 
+              src="https://player.vimeo.com/video/1166732275?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+              frameBorder="0" 
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+              className="w-full h-full"
+              title="Live Life 360 Parceiros"
+            ></iframe>
+          </motion.div>
+
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.3 }}
             className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-3xl mx-auto mb-12"
           >
             {[
@@ -89,7 +104,7 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.4 }}
           >
             <Button onClick={scrollToForm} className="w-full md:w-auto mx-auto text-xl px-12 py-5">
               👉 Quero acesso ao ecossistema
@@ -101,46 +116,34 @@ const Hero = () => {
   );
 };
 
-// --- Video Section ---
+// --- Live Content Section ---
 
-const VideoSection = () => {
+const LiveContentSection = () => {
   return (
     <Section className="bg-zinc-900 border-t border-white/5">
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Assista à live e entenda como funciona o ecossistema <span className="text-[#D4AF37]">Life 360 Parceiros</span> na prática
-          </h2>
-          <p className="text-gray-400 text-lg mb-8">
-            Nesta live você vai ver como a plataforma organiza a operação, como o parceiro vende com segurança e como escolher o melhor caminho para começar.
-          </p>
-          
-          <div className="space-y-6">
-            <h3 className="text-white font-semibold text-xl">Você vai aprender:</h3>
-            <ul className="space-y-4">
-              {[
-                "Como posicionar reabilitação de crédito sem soar golpe",
-                "Como a plataforma cria uma esteira de entrega sem bagunça e sem retrabalho",
-                "Como funciona o processo e o suporte para você operar com confiança",
-                "Quando faz sentido começar com marca Life360 ou ir de White Label"
-              ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <Play size={20} className="text-[#D4AF37] mt-1 shrink-0 fill-current" />
-                  <span className="text-gray-300">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black">
-          <iframe 
-            src="https://player.vimeo.com/video/1166732275?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-            frameBorder="0" 
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
-            className="absolute top-0 left-0 w-full h-full"
-            title="Live Life 360 Parceiros"
-          ></iframe>
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+          Assista à live e entenda como funciona o ecossistema <span className="text-[#D4AF37]">Life 360 Parceiros</span> na prática
+        </h2>
+        <p className="text-gray-400 text-lg mb-12 max-w-3xl mx-auto">
+          Nesta live você vai ver como a plataforma organiza a operação, como o parceiro vende com segurança e como escolher o melhor caminho para começar.
+        </p>
+        
+        <div className="bg-black/40 p-8 rounded-2xl border border-white/5 text-left">
+          <h3 className="text-white font-semibold text-xl mb-6 text-center">Você vai aprender:</h3>
+          <ul className="grid md:grid-cols-2 gap-6">
+            {[
+              "Como posicionar reabilitação de crédito sem soar golpe",
+              "Como a plataforma cria uma esteira de entrega sem bagunça e sem retrabalho",
+              "Como funciona o processo e o suporte para você operar com confiança",
+              "Quando faz sentido começar com marca Life360 ou ir de White Label"
+            ].map((item, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <Play size={20} className="text-[#D4AF37] mt-1 shrink-0 fill-current" />
+                <span className="text-gray-300">{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </Section>
@@ -204,7 +207,8 @@ const FormSection = () => {
     name: '',
     whatsapp: '',
     profile: '',
-    hasClients: ''
+    hasClients: '',
+    objective: ''
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -215,7 +219,8 @@ const FormSection = () => {
 *Nome:* ${formData.name}
 *WhatsApp:* ${formData.whatsapp}
 *Perfil:* ${formData.profile}
-*Já atende clientes:* ${formData.hasClients}`;
+*Já atende clientes:* ${formData.hasClients}
+*Objetivo:* ${formData.objective}`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/5579996822457?text=${encodedMessage}`;
@@ -283,6 +288,24 @@ const FormSection = () => {
               <option value="Contador ou Escritório Contábil">Contador ou Escritório Contábil</option>
               <option value="Consultor de crédito ou score">Consultor de crédito ou score</option>
               <option value="Agência ou Infoprodutor">Agência ou Infoprodutor</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">Qual seu principal objetivo?</label>
+            <select
+              name="objective"
+              required
+              value={formData.objective}
+              onChange={handleChange}
+              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-colors appearance-none"
+            >
+              <option value="">Selecione uma opção</option>
+              <option value="Ter uma nova fonte de renda">Ter uma nova fonte de renda</option>
+              <option value="Organizar minha operação atual">Organizar minha operação atual</option>
+              <option value="Aumentar conversão e ticket">Aumentar conversão e ticket</option>
+              <option value="Começar do zero">Começar do zero</option>
               <option value="Outro">Outro</option>
             </select>
           </div>
@@ -413,7 +436,7 @@ export default function App() {
   return (
     <div className="font-sans antialiased bg-black min-h-screen text-white selection:bg-[#D4AF37] selection:text-black">
       <Hero />
-      <VideoSection />
+      <LiveContentSection />
       <TargetAudience />
       <FormSection />
       <FAQ />
