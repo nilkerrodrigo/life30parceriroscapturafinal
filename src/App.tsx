@@ -72,7 +72,7 @@ const Hero = () => {
             className="w-full max-w-4xl mx-auto mb-12 aspect-video rounded-2xl overflow-hidden shadow-2xl border border-[#D4AF37]/30 bg-black relative z-20"
           >
             <iframe 
-              src="https://drive.google.com/file/d/1YJ6esTM2w_iKG5sucO5YadP2HGjjEaRO/preview" 
+              src="https://drive.google.com/file/d/1FYOdGH59KkQbhbZrgXuCoPlwJUFR-6_O/preview" 
               frameBorder="0" 
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
               className="w-full h-full"
